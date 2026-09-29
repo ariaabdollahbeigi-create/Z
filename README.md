@@ -1,2 +1,2 @@
-# zinspect
+# Z
 Z community website
