@@ -1,177 +1,81 @@
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#050505;--text:#f5f5f0;--muted:#aaa;--acid:#b8ff3d;--line:rgba(255,255,255,.12)}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+html{scroll-behavior:smooth;width:100%;overflow-x:hidden}
+body{width:100%;min-width:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+main,section,header,footer{width:100%;max-width:100%}
 a{color:inherit;text-decoration:none}
-.noise{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+button{font-family:inherit}
+.noise{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .cursor-glow{position:fixed;width:280px;height:280px;border-radius:50%;background:rgba(184,255,61,.06);filter:blur(55px);pointer-events:none;z-index:1;transform:translate(-50%,-50%)}
+
+/* Navigation */
 .nav{height:76px;position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(5,5,5,.45);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.09)}
-.brand{font:700 28px "Space Grotesk";letter-spacing:-2px}.brand span{color:var(--acid)}
+.brand{font:700 28px/1 "Space Grotesk",sans-serif;letter-spacing:-2px;flex:0 0 auto}.brand span{color:var(--acid)}
 .nav nav{display:flex;gap:32px;color:#ddd;font-size:11px;font-weight:800;letter-spacing:1.5px}.nav nav a:hover{color:var(--acid)}
 .nav-btn,.btn{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--acid);padding:13px 18px;font-size:10px;font-weight:900;letter-spacing:1.3px}
-.nav-btn{color:var(--acid)}
+.nav-btn{color:var(--acid)}.btn.primary{background:var(--acid);color:#050505;border-color:var(--acid)}.btn.ghost{border-color:rgba(255,255,255,.4);background:rgba(0,0,0,.18)}.btn:hover{transform:translateY(-2px)}
+
+/* Videos */
 .video-section{height:100vh;min-height:680px;position:relative;overflow:hidden;margin:0;padding:0}
-.bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.bg-video{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block}
 .video-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.48) 52%,rgba(0,0,0,.22) 100%),linear-gradient(0deg,rgba(0,0,0,.65),transparent 42%,rgba(0,0,0,.3));z-index:1}
 .story-shade{background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.57) 52%,rgba(0,0,0,.28) 100%),linear-gradient(0deg,rgba(0,0,0,.65),transparent 45%,rgba(0,0,0,.18))}
-.overlay-content{position:absolute;z-index:2}
-.hero-content{left:8vw;top:50%;transform:translateY(-42%);max-width:760px}
+.overlay-content{position:absolute;z-index:2}.hero-content{left:8vw;top:50%;transform:translateY(-42%);max-width:760px}
 .eyebrow,.section-tag{font-size:10px;letter-spacing:2.5px;font-weight:900;color:var(--acid)}
 .pulse{display:inline-block;width:7px;height:7px;background:var(--acid);border-radius:50%;box-shadow:0 0 18px var(--acid);margin-right:8px}
-h1{font:700 clamp(130px,22vw,300px)/.72 "Space Grotesk";letter-spacing:-.1em;margin:38px 0 25px}h1 span{color:var(--acid)}
-.hero-line{font-size:clamp(17px,2vw,27px);font-weight:900;letter-spacing:4px}
-.hero-copy{max-width:590px;color:#d0d0ca;line-height:1.75;margin-top:20px;font-size:14px}
-.hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}.btn.primary{background:var(--acid);color:#050505;border-color:var(--acid)}.btn.ghost{border-color:rgba(255,255,255,.4);background:rgba(0,0,0,.18)}.btn:hover{transform:translateY(-2px)}
-.video-meta{position:absolute;z-index:2;left:8vw;right:8vw;bottom:25px;display:flex;justify-content:space-between;color:#aaa;font:10px monospace;letter-spacing:1px}
-.story-overlay{left:8vw;top:50%;transform:translateY(-48%);max-width:850px}
-.story-overlay h2{font:700 clamp(55px,7.5vw,105px)/.9 "Space Grotesk";letter-spacing:-.06em;margin:25px 0 28px}.story-overlay h2 em{color:var(--acid);font-style:normal}
-.story-copy{max-width:600px;padding:22px 26px;border-left:2px solid var(--acid);background:rgba(0,0,0,.28);backdrop-filter:blur(5px)}
-.story-copy .lead{font-size:19px;line-height:1.55;margin-bottom:15px}.story-copy p:not(.lead){color:#d0d0ca;line-height:1.7;margin-top:10px;font-size:13px}
+h1{font:700 clamp(130px,22vw,300px)/.72 "Space Grotesk",sans-serif;letter-spacing:-.1em;margin:38px 0 25px}h1 span{color:var(--acid)}
+.hero-line{font-size:clamp(17px,2vw,27px);font-weight:900;letter-spacing:4px}.hero-copy{max-width:590px;color:#d0d0ca;line-height:1.75;margin-top:20px;font-size:14px}
+.hero-actions{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.video-meta{position:absolute;z-index:2;left:8vw;right:8vw;bottom:25px;display:flex;justify-content:space-between;gap:20px;color:#aaa;font:10px monospace;letter-spacing:1px}
+.story-overlay{left:8vw;top:50%;transform:translateY(-48%);max-width:850px}.story-overlay h2{font:700 clamp(55px,7.5vw,105px)/.9 "Space Grotesk",sans-serif;letter-spacing:-.06em;margin:25px 0 28px}.story-overlay h2 em{color:var(--acid);font-style:normal}
+.story-copy{max-width:600px;padding:22px 26px;border-left:2px solid var(--acid);background:rgba(0,0,0,.28);backdrop-filter:blur(5px)}.story-copy .lead{font-size:19px;line-height:1.55;margin-bottom:15px}.story-copy p:not(.lead){color:#d0d0ca;line-height:1.7;margin-top:10px;font-size:13px}
 .side-label{position:absolute;right:8vw;bottom:32px;z-index:2;color:#aaa;font-size:9px;letter-spacing:2px;font-weight:800}
-.section{padding:130px 8vw;position:relative}.movement{background:radial-gradient(circle at 80% 30%,rgba(184,255,61,.05),transparent 30%)}
-.headline-row{display:grid;grid-template-columns:1fr .7fr;gap:8vw;align-items:end;margin-top:50px}.headline-row h2,.proof h2,.links h2{font:700 clamp(48px,7vw,105px)/.92 "Space Grotesk";letter-spacing:-.06em}.headline-row h2 em,.proof h2 em,.links h2 em{color:var(--acid);font-style:normal}.headline-row p{color:#aaa;line-height:1.8;font-size:15px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:70px}.card{border:1px solid var(--line);padding:34px;min-height:270px;background:rgba(255,255,255,.02);transition:.3s}.card:hover{border-color:rgba(184,255,61,.55);transform:translateY(-5px)}.card-num{color:var(--acid);font:11px monospace}.card h3{font:700 27px "Space Grotesk";margin:65px 0 14px}.card p{color:#999;line-height:1.7;font-size:14px}
-.proof{background:#080808}.proof h2,.links h2{margin-top:45px}.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:75px}.stat{padding:32px 20px;border-right:1px solid var(--line)}.stat:last-child{border-right:0}.stat span{font-size:9px;letter-spacing:2px;color:#777;font-weight:900}.stat strong{display:block;color:var(--acid);font:700 clamp(28px,4vw,58px) "Space Grotesk";margin:22px 0 8px;letter-spacing:-.05em}.stat p{font-size:11px;color:#888}
-.manifesto{margin-top:85px;padding:42px;border:1px solid var(--line);display:flex;gap:32px;align-items:center}.manifesto-mark{font:700 68px "Space Grotesk";color:var(--acid)}.quote{font:700 30px "Space Grotesk";letter-spacing:-.04em}.small{color:#777;margin-top:8px}
-.links-intro{color:#888;margin-top:20px}.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:55px}.link-card{border:1px solid var(--line);padding:32px;min-height:185px;display:flex;flex-direction:column;justify-content:space-between}.link-card:hover{border-color:var(--acid)}.link-card span{font-size:9px;color:#777;letter-spacing:2px;font-weight:900}.link-card strong{font:700 clamp(25px,4vw,55px) "Space Grotesk";letter-spacing:-.05em}.main-link strong{color:var(--acid)}.link-card small{color:#777}.contract-card{min-height:235px}.contract-card .address{margin:22px 0}.tokenomics{background:radial-gradient(circle at 15% 35%,rgba(184,255,61,.045),transparent 28%)}.token-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:14px;margin-top:70px}.token-card{border:1px solid var(--line);padding:32px;background:rgba(255,255,255,.02);min-height:190px}.token-card span,.treasury-balance span,.treasury-address>span{font-size:9px;color:#777;letter-spacing:2px;font-weight:900}.token-card strong{display:block;font:700 clamp(30px,4vw,58px) "Space Grotesk";color:var(--acid);letter-spacing:-.055em;margin:25px 0 7px;overflow-wrap:anywhere}.token-card small,.treasury-balance small{color:#777;font-size:10px;letter-spacing:1px}.treasury-panel{border:1px solid var(--line);margin-top:14px;padding:34px;background:rgba(255,255,255,.018)}.treasury-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:25px}.treasury-heading h3{font:700 clamp(30px,4vw,58px)/.95 "Space Grotesk";letter-spacing:-.055em;margin-top:12px}.live-status{font:900 9px monospace;letter-spacing:1.5px;color:var(--acid);white-space:nowrap}.live-status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acid);box-shadow:0 0 12px var(--acid);margin-right:7px}.treasury-grid{display:grid;grid-template-columns:1fr 2fr;gap:14px;margin-top:24px}.treasury-balance,.treasury-address{border:1px solid var(--line);padding:32px;min-height:205px}.treasury-balance strong{display:block;font:700 clamp(34px,4vw,58px) "Space Grotesk";margin:18px 0 8px;color:#fff;letter-spacing:-.05em;overflow-wrap:anywhere}.treasury-address code{display:block;font:700 clamp(14px,1.55vw,22px)/1.25 monospace;color:#fff;word-break:break-all;margin:18px 0}.treasury-footer{display:flex;justify-content:space-between;gap:20px;margin-top:20px;color:#666;font:9px monospace;letter-spacing:1px}.treasury-footer a{color:#aaa}.treasury-footer a:hover{color:var(--acid)}.address{font:700 clamp(20px,2.65vw,42px) monospace!important;line-height:1.08;letter-spacing:-.055em;word-break:break-all;color:#fff!important;text-shadow:0 0 24px rgba(184,255,61,.12)}.copy{align-self:flex-start;border:1px solid #555;background:none;color:#aaa;padding:9px 12px;font-size:9px;font-weight:900;letter-spacing:1px;cursor:pointer}.copy:hover{border-color:var(--acid);color:var(--acid)}
-.finale{height:92vh}.finale-content{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:90%}.finale-content>span{color:var(--acid);font:700 20px "Space Grotesk";letter-spacing:4px}.finale-content h2{font:700 clamp(58px,10vw,150px)/.86 "Space Grotesk";letter-spacing:-.07em;margin:20px 0 35px}
-footer{display:flex;justify-content:space-between;padding:28px 5vw;border-top:1px solid var(--line);font-size:9px;letter-spacing:1.5px;color:#666}footer strong{color:var(--acid)}
-@media(max-width:800px){.nav{padding:0 20px}.nav nav{display:none}.nav-btn{padding:10px 12px}.video-section{min-height:680px}.hero-content,.story-overlay{left:22px;right:22px;max-width:none}.hero-content{top:51%}.hero-line{letter-spacing:2px}.hero-copy{font-size:13px}.video-meta{left:22px;right:22px}.video-meta span:first-child{font-weight:800}.video-meta span:last-child{max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.story-overlay{top:49%}.story-overlay h2{font-size:clamp(48px,14vw,76px);margin:20px 0}.story-copy{padding:17px 18px}.story-copy .lead{font-size:16px}.side-label{display:none}.section{padding:85px 22px}.headline-row,.link-grid{grid-template-columns:1fr;gap:35px}.cards,.stats,.token-grid,.treasury-grid{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}.manifesto{padding:28px;align-items:flex-start}.treasury-panel{padding:22px}.treasury-heading{align-items:flex-start}.treasury-footer{flex-direction:column}.contract-card .address{font-size:clamp(19px,5.4vw,29px)}.quote{font-size:25px}}
-```css
-/* =========================
-   ACHIEVEMENT CARDS
-========================= */
 
-.achievement-card {
-  position: relative;
-  overflow: hidden;
-}
+/* Shared sections */
+.section{padding:130px 8vw;position:relative}.section h2{font:700 clamp(48px,7vw,105px)/.92 "Space Grotesk",sans-serif;letter-spacing:-.06em}.section h2 em{color:var(--acid);font-style:normal}
+.movement{background:radial-gradient(circle at 80% 30%,rgba(184,255,61,.05),transparent 30%)}
+.headline-row{display:grid;grid-template-columns:1fr .7fr;gap:8vw;align-items:end;margin-top:50px}.headline-row h2{font:700 clamp(48px,7vw,105px)/.92 "Space Grotesk",sans-serif;letter-spacing:-.06em}.headline-row h2 em{color:var(--acid);font-style:normal}.headline-row p{color:#aaa;line-height:1.8;font-size:15px}
 
-.achievement-card strong {
-  display: block;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1;
-  margin: 18px 0 6px;
-  letter-spacing: -0.04em;
-}
+/* Movement cards */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:70px}.card{border:1px solid var(--line);padding:34px;min-height:270px;background:rgba(255,255,255,.02);transition:.3s}.card:hover{border-color:rgba(184,255,61,.55);transform:translateY(-5px)}.card-num{color:var(--acid);font:11px monospace}.card h3{font:700 27px "Space Grotesk",sans-serif;margin:65px 0 14px}.card p{color:#999;line-height:1.7;font-size:14px}
 
-.achievement-card small {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  opacity: 0.65;
-}
+/* Tokenomics */
+.tokenomics{background:radial-gradient(circle at 15% 35%,rgba(184,255,61,.045),transparent 28%)}
+.token-grid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:14px;margin-top:70px}.token-card{border:1px solid var(--line);padding:32px;background:rgba(255,255,255,.02);min-height:190px}.token-card span{font-size:9px;color:#777;letter-spacing:2px;font-weight:900}.token-card strong{display:block;font:700 clamp(30px,4vw,58px) "Space Grotesk",sans-serif;color:var(--acid);letter-spacing:-.055em;margin:25px 0 7px;overflow-wrap:anywhere}.token-card small{color:#777;font-size:10px;letter-spacing:1px}
 
-.achievement-card p {
-  margin-top: 18px;
-}
+/* Links */
+.links h2{margin-top:45px}.links-intro{color:#888;margin-top:20px}.link-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:55px}.link-card{border:1px solid var(--line);padding:32px;min-height:185px;display:flex;flex-direction:column;justify-content:space-between;background:transparent;min-width:0}.link-card:hover{border-color:var(--acid)}.link-card span{font-size:9px;color:#777;letter-spacing:2px;font-weight:900}.link-card strong{font:700 clamp(25px,4vw,55px) "Space Grotesk",sans-serif;letter-spacing:-.05em}.main-link strong{color:var(--acid)}.link-card small{color:#777}.contract-card{min-height:235px}.address{font:700 clamp(20px,2.65vw,42px) monospace!important;line-height:1.08;letter-spacing:-.055em;word-break:break-all;overflow-wrap:anywhere;color:#fff!important;text-shadow:0 0 24px rgba(184,255,61,.12)}
+.copy{align-self:flex-start;border:1px solid #555;background:none;color:#aaa;padding:9px 12px;font-size:9px;font-weight:900;letter-spacing:1px;cursor:pointer}.copy:hover{border-color:var(--acid);color:var(--acid)}
+.treasury-link-card{min-height:235px}.treasury-link-card .address{font-size:clamp(15px,1.7vw,24px)!important;line-height:1.2;margin:18px 0}.link-card-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.card-link{color:#777;font-size:9px;font-weight:900;letter-spacing:1px}.card-link:hover{color:var(--acid)}
 
-.achievement-card::after {
-  content: "";
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  right: -70px;
-  bottom: -70px;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 50%;
-  pointer-events: none;
-}
-```
-```css
-.achievement-card {
-  position: relative;
-  overflow: hidden;
-}
+/* Achievements */
+.achievements{background:radial-gradient(circle at 50% 20%,rgba(184,255,61,.035),transparent 34%)}.achievements h2{margin-top:45px}.achievements-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:55px}.achievements-grid .achievement-card{min-height:260px;position:relative;overflow:hidden}.achievements-grid .achievement-card strong{display:block;color:var(--acid);font:700 clamp(25px,3.5vw,48px)/.98 "Space Grotesk",sans-serif;letter-spacing:-.04em;margin:18px 0 6px}.achievement-value{color:#fff;font:700 clamp(25px,3.2vw,45px)/1.05 "Space Grotesk",sans-serif;letter-spacing:-.045em;margin-top:18px;overflow-wrap:anywhere}.achievement-card::after{content:"";position:absolute;width:140px;height:140px;right:-70px;bottom:-70px;border:1px solid rgba(255,255,255,.12);border-radius:50%;pointer-events:none}
 
-.achievement-icon {
-  font-size: 1.8rem;
-  margin: 12px 0 18px;
-  line-height: 1;
-}
+/* Final */
+.finale{height:92vh}.finale-content{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:90%;max-width:1000px}.finale-content>span{color:var(--acid);font:700 20px "Space Grotesk",sans-serif;letter-spacing:4px}.finale-content h2{font:700 clamp(58px,10vw,150px)/.86 "Space Grotesk",sans-serif;letter-spacing:-.07em;margin:20px 0 35px}
+footer{display:flex;justify-content:space-between;gap:20px;padding:28px 5vw;border-top:1px solid var(--line);font-size:9px;letter-spacing:1.5px;color:#666}footer strong{color:var(--acid)}
 
-.diamond-icon {
-  font-size: 5rem;
-  margin: 8px 0 20px;
-  line-height: 1;
-}
-
-.achievement-card strong {
-  display: block;
-  font-family: "Space Grotesk", sans-serif;
-  font-size: 3rem;
-  line-height: 1;
-  margin: 10px 0 6px;
-  letter-spacing: -0.04em;
-}
-
-.achievement-card small {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  opacity: 0.65;
-}
-
-.achievement-card p {
-  margin-top: 18px;
-}
-```
-
-
-/* =========================
-   LOWER LINK / ACHIEVEMENT CARDS
-========================= */
-.treasury-link-card{min-height:235px}
-.treasury-link-card .address{font-size:clamp(15px,1.7vw,24px)!important;line-height:1.2;margin:18px 0}
-.link-card-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.card-link{color:#777;font-size:9px;font-weight:900;letter-spacing:1px}
-.card-link:hover{color:var(--acid)}
-.achievement-link-card{min-height:235px}
-.achievement-link-card strong{color:var(--acid);font-size:clamp(24px,3.2vw,43px);line-height:.98}
-.achievement-value{color:#fff;font:700 clamp(30px,4vw,55px) "Space Grotesk";letter-spacing:-.05em;margin-top:18px}
-.achievement-link-card small{color:#777;font-size:9px;line-height:1.5;letter-spacing:1px}
-@media(max-width:800px){.treasury-link-card .address{font-size:clamp(16px,5vw,28px)!important}.link-card-actions{align-items:flex-start;flex-direction:column}}
-
-/* =========================
-   ACHIEVEMENTS SECTION
-========================= */
-.achievements {
-  background: radial-gradient(circle at 50% 20%, rgba(184,255,61,.035), transparent 34%);
-}
-.achievements h2 {
-  font: 700 clamp(48px, 7vw, 105px)/.92 "Space Grotesk";
-  letter-spacing: -.06em;
-  margin-top: 45px;
-}
-.achievements h2 em {
-  color: var(--acid);
-  font-style: normal;
-}
-.achievements-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-top: 55px;
-}
-.achievements-grid .achievement-card {
-  min-height: 260px;
-}
-.achievements-grid .achievement-card strong {
-  color: var(--acid);
-  font-size: clamp(25px, 3.5vw, 48px);
-  line-height: .98;
-}
-.achievements-grid .achievement-value {
-  color: #fff;
-  font: 700 clamp(25px, 3.2vw, 45px) "Space Grotesk";
-  line-height: 1.05;
-  letter-spacing: -.045em;
-  margin-top: 18px;
-}
+/* Mobile */
 @media(max-width:800px){
-  .achievements-grid{grid-template-columns:1fr;gap:14px}
-  .achievements h2{font-size:clamp(48px,14vw,76px)}
+  html,body{width:100%;max-width:100%;overflow-x:hidden}
+  .cursor-glow{display:none}
+  .nav{height:68px;padding:0 16px}.nav nav{display:none}.nav-btn{padding:10px 11px;font-size:9px}
+  .video-section{width:100%;min-height:680px}.bg-video{width:100%;height:100%}
+  .hero-content,.story-overlay{left:22px;right:22px;width:auto;max-width:none}.hero-content{top:51%}.hero-line{letter-spacing:2px}.hero-copy{font-size:13px}.hero-actions{max-width:100%}.btn{max-width:100%}
+  .video-meta{left:22px;right:22px;gap:10px}.video-meta span{min-width:0}.video-meta span:first-child{font-weight:800}.video-meta span:last-child{max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .story-overlay{top:49%}.story-overlay h2{font-size:clamp(48px,14vw,76px);margin:20px 0}.story-copy{padding:17px 18px}.story-copy .lead{font-size:16px}.side-label{display:none}
+  .section{padding:85px 22px;width:100%}.headline-row{grid-template-columns:1fr;gap:35px}.cards,.token-grid,.link-grid,.achievements-grid{grid-template-columns:1fr;gap:14px}
+  .card,.link-card,.token-card,.achievements-grid .achievement-card{width:100%;min-width:0}.card h3{margin-top:48px}
+  .manifesto{padding:28px;align-items:flex-start}.quote{font-size:25px}
+  .treasury-link-card .address{font-size:clamp(16px,5vw,28px)!important}.link-card-actions{align-items:flex-start;flex-direction:column}
+  .achievements h2{font-size:clamp(48px,14vw,76px)}.achievements-grid .achievement-card{min-height:220px}
+  footer{padding:24px 22px;flex-direction:column;gap:10px}
+}
+
+@media(max-width:420px){
+  .nav{padding:0 12px}.nav-btn{padding:9px 9px;font-size:8px}.brand{font-size:25px}
+  .hero-content,.story-overlay{left:17px;right:17px}.video-meta{left:17px;right:17px}.section{padding-left:17px;padding-right:17px}
+  .hero-actions{gap:8px}.btn{padding:11px 13px}
+  .link-card,.card,.token-card{padding:25px}.contract-card{min-height:215px}.treasury-link-card{min-height:220px}
+  .address{font-size:clamp(17px,6vw,25px)!important}.achievement-value{font-size:clamp(23px,7vw,34px)}
 }
