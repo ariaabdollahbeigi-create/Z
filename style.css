@@ -37,3 +37,141 @@ h1{font:700 clamp(130px,22vw,300px)/.72 "Space Grotesk";letter-spacing:-.1em;mar
 .finale{height:92vh}.finale-content{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;width:90%}.finale-content>span{color:var(--acid);font:700 20px "Space Grotesk";letter-spacing:4px}.finale-content h2{font:700 clamp(58px,10vw,150px)/.86 "Space Grotesk";letter-spacing:-.07em;margin:20px 0 35px}
 footer{display:flex;justify-content:space-between;padding:28px 5vw;border-top:1px solid var(--line);font-size:9px;letter-spacing:1.5px;color:#666}footer strong{color:var(--acid)}
 @media(max-width:800px){.nav{padding:0 20px}.nav nav{display:none}.nav-btn{padding:10px 12px}.video-section{min-height:680px}.hero-content,.story-overlay{left:22px;right:22px;max-width:none}.hero-content{top:51%}.hero-line{letter-spacing:2px}.hero-copy{font-size:13px}.video-meta{left:22px;right:22px}.video-meta span:first-child{font-weight:800}.video-meta span:last-child{max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.story-overlay{top:49%}.story-overlay h2{font-size:clamp(48px,14vw,76px);margin:20px 0}.story-copy{padding:17px 18px}.story-copy .lead{font-size:16px}.side-label{display:none}.section{padding:85px 22px}.headline-row,.link-grid{grid-template-columns:1fr;gap:35px}.cards,.stats,.token-grid,.treasury-grid{grid-template-columns:1fr}.stat{border-right:0;border-bottom:1px solid var(--line)}.stat:last-child{border-bottom:0}.manifesto{padding:28px;align-items:flex-start}.treasury-panel{padding:22px}.treasury-heading{align-items:flex-start}.treasury-footer{flex-direction:column}.contract-card .address{font-size:clamp(19px,5.4vw,29px)}.quote{font-size:25px}}
+```css
+/* =========================
+   ACHIEVEMENT CARDS
+========================= */
+
+.achievement-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-card strong {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  margin: 18px 0 6px;
+  letter-spacing: -0.04em;
+}
+
+.achievement-card small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+}
+
+.achievement-card p {
+  margin-top: 18px;
+}
+
+.achievement-card::after {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  right: -70px;
+  bottom: -70px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+  pointer-events: none;
+}
+```
+```css
+.achievement-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.achievement-icon {
+  font-size: 1.8rem;
+  margin: 12px 0 18px;
+  line-height: 1;
+}
+
+.diamond-icon {
+  font-size: 5rem;
+  margin: 8px 0 20px;
+  line-height: 1;
+}
+
+.achievement-card strong {
+  display: block;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+  margin: 10px 0 6px;
+  letter-spacing: -0.04em;
+}
+
+.achievement-card small {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  opacity: 0.65;
+}
+
+.achievement-card p {
+  margin-top: 18px;
+}
+```
+
+
+/* =========================
+   LOWER LINK / ACHIEVEMENT CARDS
+========================= */
+.treasury-link-card{min-height:235px}
+.treasury-link-card .address{font-size:clamp(15px,1.7vw,24px)!important;line-height:1.2;margin:18px 0}
+.link-card-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.card-link{color:#777;font-size:9px;font-weight:900;letter-spacing:1px}
+.card-link:hover{color:var(--acid)}
+.achievement-link-card{min-height:235px}
+.achievement-link-card strong{color:var(--acid);font-size:clamp(24px,3.2vw,43px);line-height:.98}
+.achievement-value{color:#fff;font:700 clamp(30px,4vw,55px) "Space Grotesk";letter-spacing:-.05em;margin-top:18px}
+.achievement-link-card small{color:#777;font-size:9px;line-height:1.5;letter-spacing:1px}
+@media(max-width:800px){.treasury-link-card .address{font-size:clamp(16px,5vw,28px)!important}.link-card-actions{align-items:flex-start;flex-direction:column}}
+
+/* =========================
+   ACHIEVEMENTS SECTION
+========================= */
+.achievements {
+  background: radial-gradient(circle at 50% 20%, rgba(184,255,61,.035), transparent 34%);
+}
+.achievements h2 {
+  font: 700 clamp(48px, 7vw, 105px)/.92 "Space Grotesk";
+  letter-spacing: -.06em;
+  margin-top: 45px;
+}
+.achievements h2 em {
+  color: var(--acid);
+  font-style: normal;
+}
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 55px;
+}
+.achievements-grid .achievement-card {
+  min-height: 260px;
+}
+.achievements-grid .achievement-card strong {
+  color: var(--acid);
+  font-size: clamp(25px, 3.5vw, 48px);
+  line-height: .98;
+}
+.achievements-grid .achievement-value {
+  color: #fff;
+  font: 700 clamp(25px, 3.2vw, 45px) "Space Grotesk";
+  line-height: 1.05;
+  letter-spacing: -.045em;
+  margin-top: 18px;
+}
+@media(max-width:800px){
+  .achievements-grid{grid-template-columns:1fr;gap:14px}
+  .achievements h2{font-size:clamp(48px,14vw,76px)}
+}
